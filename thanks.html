@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no,date=no,address=no,email=no,url=no">
+  <title>You're on the list — Allof</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0,400;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #FAFAF8;
+      color: #1A1A1A;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page {
+      max-width: 640px;
+      width: 100%;
+      padding: 0 28px;
+    }
+
+    /* ── Header ── */
+
+    header {
+      padding: 44px 0 40px;
+    }
+
+    .wordmark {
+      font-family: 'Inter', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #1A1A1A;
+    }
+
+    .header-rule {
+      border: none;
+      border-top: 1px solid #E8E3DD;
+      margin: 0;
+    }
+
+    /* ── Confirmation ── */
+
+    .confirmation {
+      padding: 100px 0 80px;
+      text-align: center;
+    }
+
+    .check {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 42px;
+      font-weight: 300;
+      color: #4D7444;
+      line-height: 1;
+      margin-bottom: 32px;
+    }
+
+    .headline {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(42px, 8.5vw, 62px);
+      letter-spacing: -0.015em;
+      line-height: 1.05;
+      color: #1A1A1A;
+      margin-bottom: 28px;
+    }
+
+    .subhead {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(15.5px, 2.5vw, 18px);
+      font-weight: 400;
+      line-height: 1.68;
+      color: #444444;
+      margin-bottom: 16px;
+    }
+
+    .share-line {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(15.5px, 2.5vw, 18px);
+      font-weight: 400;
+      line-height: 1.68;
+      color: #444444;
+      margin-bottom: 48px;
+    }
+
+    .share-line a {
+      color: #444444;
+      text-decoration: underline;
+      text-decoration-color: #CCCCCC;
+      text-underline-offset: 3px;
+      transition: text-decoration-color 0.12s ease;
+    }
+
+    .share-line a:hover {
+      text-decoration-color: #888888;
+    }
+
+    .back-btn {
+      display: inline-block;
+      height: 48px;
+      padding: 0 22px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14.5px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: #FFFFFF;
+      background: #3A5931;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      line-height: 48px;
+      transition: background 0.15s ease;
+    }
+
+    .back-btn:hover {
+      background: #2E4625;
+    }
+
+    .back-btn:active {
+      background: #253A1E;
+    }
+
+    /* ── Mobile ── */
+
+    @media (max-width: 500px) {
+      .page {
+        padding: 0 22px;
+      }
+
+      header {
+        padding: 32px 0 28px;
+      }
+
+      .confirmation {
+        padding: 72px 0 64px;
+      }
+
+      .back-btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .back-btn,
+      .share-line a {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <header>
+      <a href="/" class="wordmark">all of</a>
+    </header>
+
+    <hr class="header-rule">
+
+    <main>
+      <section class="confirmation">
+        <span class="check" aria-hidden="true">✓</span>
+        <h1 class="headline">You're on the list.</h1>
+        <p class="subhead">We're rolling out access to Allof in small groups over the next few weeks. You'll hear from us when your spot is ready.</p>
+        <p class="share-line">Know someone who'd love this? Send them to <a href="/">allof.app</a></p>
+        <a href="/" class="back-btn">Back to allof.app</a>
+      </section>
+    </main>
+
+  </div>
+</body>
+</html>
