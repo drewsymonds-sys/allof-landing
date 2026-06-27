@@ -233,26 +233,42 @@
       </section>
 
       <section class="waitlist">
-        <form action="https://app.us16.list-manage.com/subscribe/post?u=13ef2d1c562c5cb19bf4a78d3&id=c8f5393bd0&f_id=00c81de1f0" method="post" target="_self">
+        <form id="waitlist-form">
           <input type="hidden" name="tags" value="2216256">
-          <input type="hidden" name="redirect" value="https://allof.app/thanks">
           <div style="position:absolute;left:-5000px" aria-hidden="true">
             <input type="text" name="b_13ef2d1c562c5cb19bf4a78d3_c8f5393bd0" tabindex="-1" value="">
           </div>
           <div class="form-row">
-            <input
-              type="email"
-              name="EMAIL"
-              class="email-input"
-              placeholder="Your email address"
-              autocomplete="email"
-              required
-            >
+            <input type="email" id="email-input" name="EMAIL" class="email-input" placeholder="Your email address" autocomplete="email" required>
             <button type="submit" class="submit-btn">Request early access</button>
           </div>
           <p class="form-note">We're rolling out access in small groups. You'll hear from us when your spot is ready.</p>
           <p class="waitlist-count">Join <strong>47</strong> people already on the waitlist</p>
         </form>
+
+        <script>
+        document.getElementById('waitlist-form').addEventListener('submit', function(e) {
+          e.preventDefault();
+
+          const email = document.getElementById('email-input').value;
+          const url = 'https://app.us16.list-manage.com/subscribe/post?u=13ef2d1c562c5cb19bf4a78d3&id=c8f5393bd0&f_id=00c81de1f0';
+
+          const formData = new FormData();
+          formData.append('EMAIL', email);
+          formData.append('tags', '2216256');
+          formData.append('b_13ef2d1c562c5cb19bf4a78d3_c8f5393bd0', '');
+
+          fetch(url, {
+            method: 'POST',
+            body: formData,
+            mode: 'no-cors'
+          }).then(() => {
+            window.location.href = '/thanks';
+          }).catch(() => {
+            window.location.href = '/thanks';
+          });
+        });
+        </script>
       </section>
     </main>
 
