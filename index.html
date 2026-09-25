@@ -178,6 +178,29 @@
       font-weight: 500;
     }
 
+    /* ── Footer ── */
+
+    footer {
+      padding: 28px 0 44px;
+      border-top: 1px solid #E8E3DD;
+      font-size: 13.5px;
+      color: #888888;
+      text-align: center;
+    }
+
+    footer nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 22px;
+    }
+
+    footer a:hover,
+    footer a:focus-visible {
+      color: #1A1A1A;
+      text-decoration: underline;
+    }
+
     /* ── Mobile ── */
 
     @media (max-width: 500px) {
@@ -270,6 +293,13 @@
         </script>
       </section>
     </main>
+
+    <footer>
+      <nav aria-label="Legal">
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Service</a>
+      </nav>
+    </footer>
 
   </div>
 </body>
