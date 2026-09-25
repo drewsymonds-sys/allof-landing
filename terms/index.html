@@ -23,11 +23,9 @@
       align-items: center;
     }
     .page { max-width: 760px; width: 100%; padding: 0 28px; }
-    header { padding: 44px 0 40px; }
-    .wordmark {
-      font-size: 20px; font-weight: 700; letter-spacing: 1.5px;
-      color: #1A1A1A; text-decoration: none;
-    }
+    header { padding: 36px 0 32px; }
+    .logo { display: inline-block; line-height: 0; border-radius: 50%; }
+    .logo img { display: block; width: 64px; height: 64px; border-radius: 50%; }
     .header-rule { border: none; border-top: 1px solid #E8E3DD; margin: 0; }
     .doc-head { padding: 56px 0 28px; }
     h1 {
@@ -49,14 +47,14 @@
     a:focus-visible { outline: 2px solid #3A5931; outline-offset: 3px; border-radius: 2px; }
     @media (max-width: 500px) {
       .page { padding: 0 22px; }
-      header { padding: 32px 0 28px; }
+      header { padding: 28px 0 24px; }
       .doc-head { padding: 40px 0 20px; }
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <header><a href="/" class="wordmark">all of</a></header>
+    <header><a href="/" class="logo" aria-label="allof home"><img src="/assets/allof-logo.png" width="64" height="64" alt="allof"></a></header>
     <hr class="header-rule">
 
     <main>
