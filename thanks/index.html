@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="format-detection" content="telephone=no,date=no,address=no,email=no,url=no">
-  <title>You're on the list — Allof</title>
+  <title>You're on the list — allof</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0,400;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -41,15 +41,20 @@
     /* ── Header ── */
 
     header {
-      padding: 44px 0 40px;
+      padding: 36px 0 32px;
     }
 
-    .wordmark {
-      font-family: 'Inter', sans-serif;
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      color: #1A1A1A;
+    .logo {
+      display: inline-block;
+      line-height: 0;
+      border-radius: 50%;
+    }
+
+    .logo img {
+      display: block;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
     }
 
     .header-rule {
@@ -149,7 +154,7 @@
       }
 
       header {
-        padding: 32px 0 28px;
+        padding: 28px 0 24px;
       }
 
       .confirmation {
@@ -174,7 +179,7 @@
   <div class="page">
 
     <header>
-      <a href="/" class="wordmark">all of</a>
+      <a href="/" class="logo" aria-label="allof home"><img src="/assets/allof-logo.png" width="64" height="64" alt="allof"></a>
     </header>
 
     <hr class="header-rule">
@@ -183,7 +188,7 @@
       <section class="confirmation">
         <span class="check" aria-hidden="true">✓</span>
         <h1 class="headline">You're on the list.</h1>
-        <p class="subhead">We're rolling out access to Allof in small groups over the next few weeks. You'll hear from us when your spot is ready.</p>
+        <p class="subhead">We're rolling out access to allof in small groups over the next few weeks. You'll hear from us when your spot is ready.</p>
         <p class="share-line">Know someone who'd love this? Send them to <a href="/">allof.app</a></p>
         <a href="/" class="back-btn">Back to allof.app</a>
       </section>
