@@ -4,11 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="format-detection" content="telephone=no,date=no,address=no,email=no,url=no">
-  <title>allof — Dinner, handled.</title>
-  <meta name="description" content="allof plans your family's meals, generates recipes, and builds your grocery list automatically — and gets smarter every week.">
+  <title>allof — allof the dinner, none of the debate.</title>
+  <meta name="description" content="AI-assisted meal planning with real creative control. Discover or create meals, customize recipes, share with your household, and send your grocery list to your Kroger cart. iOS, Android and web, in private beta.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="allof — allof the dinner, none of the debate.">
+  <meta property="og:description" content="AI-assisted meal planning that blends effortless suggestions with deep personal control.">
+  <meta property="og:image" content="https://allof.app/assets/og-mosaic.jpg">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0,400;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="/assets/hero-mosaic.webp">
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -21,95 +27,107 @@
       text-decoration: none;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background-color: #FAFAF8;
       color: #1A1A1A;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
 
-    .page {
-      max-width: 640px;
-      width: 100%;
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
       padding: 0 28px;
     }
 
-    /* ── Header ── */
+    .serif {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: -0.015em;
+    }
 
-    header {
-      padding: 36px 0 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    /* ── Hero: a mosaic of meals with the sign-up card on top ── */
+
+    .hero {
+      background: #E8E3DD url('/assets/hero-mosaic.webp') center / cover no-repeat;
+      padding: 88px 22px;
+    }
+
+    .hero-card {
+      max-width: 580px;
+      margin: 0 auto;
+      padding: 44px 40px 36px;
+      text-align: center;
+      background: rgba(250, 250, 248, 0.97);
+      border-radius: 28px;
+      box-shadow: 0 24px 60px rgba(26, 26, 26, 0.22);
     }
 
     .logo {
-      display: inline-block;
+      display: block;
+      width: 84px;
       line-height: 0;
       border-radius: 50%;
+      margin: 0 auto 22px;
     }
 
     .logo img {
       display: block;
-      width: 64px;
-      height: 64px;
+      width: 84px;
+      height: 84px;
       border-radius: 50%;
     }
 
-    .header-rule {
-      border: none;
-      border-top: 1px solid #E8E3DD;
-      margin: 0;
-    }
-
-    /* ── Hero ── */
-
-    .hero {
-      padding: 88px 0 64px;
-      text-align: center;
+    .pill {
+      display: table;
+      margin: 0 auto 20px;
+      padding: 6px 14px;
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: #3A5931;
+      background: #EEF3EA;
+      border-radius: 999px;
     }
 
     .headline {
-      font-family: 'Instrument Serif', Georgia, serif;
-      font-style: italic;
-      font-weight: 400;
-      font-size: clamp(52px, 10.5vw, 76px);
-      letter-spacing: -0.015em;
-      line-height: 1.05;
+      font-size: clamp(40px, 8.4vw, 58px);
+      line-height: 1.06;
       color: #1A1A1A;
-      margin-bottom: 28px;
+      margin-bottom: 20px;
     }
 
     .subhead {
-      font-family: 'Inter', sans-serif;
-      font-size: clamp(15.5px, 2.5vw, 18px);
-      font-weight: 400;
-      line-height: 1.68;
-      color: #444444;
-      margin-bottom: 18px;
+      font-size: clamp(17px, 2.6vw, 19px);
+      font-weight: 500;
+      line-height: 1.5;
+      color: #2B2B2B;
+      margin-bottom: 14px;
     }
 
-    /* ── Waitlist ── */
-
-    .waitlist {
-      padding-bottom: 100px;
-      text-align: center;
+    .desc {
+      font-size: clamp(15px, 2.3vw, 16px);
+      line-height: 1.65;
+      color: #555555;
+      margin-bottom: 30px;
     }
 
     .form-row {
       display: flex;
       gap: 8px;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .email-input {
       flex: 1;
-      height: 48px;
+      min-width: 0;
+      height: 50px;
       padding: 0 16px;
       font-family: 'Inter', sans-serif;
       font-size: 15px;
@@ -125,17 +143,20 @@
     }
 
     .email-input::placeholder {
-      color: #BBBBBB;
+      color: #A8A8A8;
     }
 
     .email-input:focus {
-      border-color: #AAAAAA;
+      border-color: #3A5931;
     }
 
-    .submit-btn {
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       flex-shrink: 0;
-      height: 48px;
-      padding: 0 22px;
+      height: 50px;
+      padding: 0 24px;
       font-family: 'Inter', sans-serif;
       font-size: 14.5px;
       font-weight: 500;
@@ -149,29 +170,159 @@
       transition: background 0.15s ease;
     }
 
-    .submit-btn:hover {
+    .btn:hover {
       background: #2E4625;
     }
 
-    .submit-btn:active {
+    .btn:active {
       background: #253A1E;
+    }
+
+    .btn:focus-visible,
+    .email-input:focus-visible {
+      outline: 2px solid #3A5931;
+      outline-offset: 2px;
     }
 
     .form-note {
       font-size: 13.5px;
       line-height: 1.6;
-      color: #888888;
+      color: #6B6B6B;
+    }
+
+    /* ── Section headings ── */
+
+    section {
+      padding: 88px 0 0;
+    }
+
+    .section-title {
+      font-size: clamp(34px, 6vw, 46px);
+      line-height: 1.1;
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    .section-lede {
+      max-width: 520px;
+      margin: 0 auto 44px;
+      font-size: 16px;
+      line-height: 1.65;
+      color: #555555;
+      text-align: center;
+    }
+
+    /* ── Screenshots ── */
+
+    .shots {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+      list-style: none;
+    }
+
+    .shots img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 22px;
+      box-shadow: 0 14px 34px rgba(26, 26, 26, 0.16);
+    }
+
+    /* ── How it works ── */
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      list-style: none;
+    }
+
+    .step-num {
+      display: block;
+      margin-bottom: 14px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: #3A5931;
+    }
+
+    .step h3 {
+      font-size: 28px;
+      line-height: 1.15;
       margin-bottom: 12px;
     }
 
-    .waitlist-count {
-      font-size: 13.5px;
-      color: #888888;
+    .step p {
+      font-size: 15.5px;
+      line-height: 1.68;
+      color: #444444;
     }
 
-    .waitlist-count strong {
+    .learns {
+      max-width: 560px;
+      margin: 48px auto 0;
+      font-size: 15.5px;
+      line-height: 1.68;
       color: #555555;
-      font-weight: 500;
+      text-align: center;
+    }
+
+    /* ── Features ── */
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      list-style: none;
+    }
+
+    .feature {
+      padding: 30px 30px 28px;
+      background: #FFFFFF;
+      border: 1px solid #E8E3DD;
+      border-radius: 20px;
+    }
+
+    .feature h3 {
+      font-size: 26px;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    .feature p {
+      font-size: 15.5px;
+      line-height: 1.68;
+      color: #444444;
+    }
+
+    /* ── Founders ── */
+
+    .founders {
+      max-width: 580px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .founders .section-title {
+      margin-bottom: 14px;
+    }
+
+    .founders p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #555555;
+    }
+
+    /* ── Closing call to action ── */
+
+    .closing {
+      padding-bottom: 96px;
+      text-align: center;
+    }
+
+    .closing .section-lede {
+      margin-bottom: 28px;
     }
 
     /* ── Footer ── */
@@ -180,7 +331,7 @@
       padding: 28px 0 44px;
       border-top: 1px solid #E8E3DD;
       font-size: 13.5px;
-      color: #888888;
+      color: #6B6B6B;
       text-align: center;
     }
 
@@ -189,6 +340,7 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 8px 22px;
+      margin-bottom: 12px;
     }
 
     footer a:hover,
@@ -197,19 +349,45 @@
       text-decoration: underline;
     }
 
-    /* ── Mobile ── */
+    /* ── Tablet and phone ── */
+
+    @media (max-width: 900px) {
+      .shots {
+        display: flex;
+        gap: 16px;
+        padding-bottom: 18px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .shots li {
+        flex: 0 0 220px;
+        scroll-snap-align: center;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+    }
 
     @media (max-width: 500px) {
-      .page {
+      .wrap {
         padding: 0 22px;
       }
 
-      header {
-        padding: 28px 0 24px;
+      .hero {
+        padding: 36px 16px;
       }
 
-      .hero {
-        padding: 64px 0 48px;
+      .hero-card {
+        padding: 32px 22px 28px;
+        border-radius: 24px;
       }
 
       .form-row {
@@ -217,85 +395,179 @@
         gap: 10px;
       }
 
-      .submit-btn {
-        height: 50px;
+      .email-input {
+        flex: none;
         width: 100%;
-        font-size: 15px;
       }
 
-      .waitlist {
+      .btn {
+        width: 100%;
+      }
+
+      section {
+        padding-top: 64px;
+      }
+
+      .closing {
         padding-bottom: 72px;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .submit-btn {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .btn,
+      .email-input {
         transition: none;
       }
     }
   </style>
 </head>
 <body>
-  <div class="page">
 
-    <header>
-      <a href="/" class="logo" aria-label="allof home"><img src="/assets/allof-logo.png" width="64" height="64" alt="allof"></a>
-    </header>
+  <header class="hero">
+    <div class="hero-card">
+      <a href="/" class="logo" aria-label="allof home"><img src="/assets/allof-logo.png" width="84" height="84" alt="allof"></a>
+      <p class="pill">iOS, Android and web · now in private beta</p>
+      <h1 class="headline serif">allof the dinner, none of the debate.</h1>
+      <p class="subhead">Spend less time thinking about what's for dinner, and more time enjoying it.</p>
+      <p class="desc">AI-assisted meal planning that blends effortless suggestions with deep personal control. allof learns your household's real tastes, then puts full creative control in your hands to customize recipes, quantities, ingredients and more.</p>
 
-    <hr class="header-rule">
+      <form id="waitlist-form">
+        <input type="hidden" name="tags" value="2216256">
+        <div style="position:absolute;left:-5000px" aria-hidden="true">
+          <input type="text" name="b_13ef2d1c562c5cb19bf4a78d3_c8f5393bd0" tabindex="-1" value="">
+        </div>
+        <div class="form-row">
+          <input type="email" id="email-input" name="EMAIL" class="email-input" placeholder="Your email address" autocomplete="email" aria-label="Your email address" required>
+          <button type="submit" class="btn">Request early access</button>
+        </div>
+        <p class="form-note">We're rolling out access in small groups. You'll hear from us when your spot is ready.</p>
+      </form>
 
-    <main>
-      <section class="hero">
-        <h1 class="headline">Dinner, handled.</h1>
-        <p class="subhead">allof plans your family's meals, generates recipes, and builds your grocery list automatically — and gets smarter every week.</p>
-      </section>
+      <script>
+      document.getElementById('waitlist-form').addEventListener('submit', function(e) {
+        e.preventDefault();
 
-      <section class="waitlist">
-        <form id="waitlist-form">
-          <input type="hidden" name="tags" value="2216256">
-          <div style="position:absolute;left:-5000px" aria-hidden="true">
-            <input type="text" name="b_13ef2d1c562c5cb19bf4a78d3_c8f5393bd0" tabindex="-1" value="">
-          </div>
-          <div class="form-row">
-            <input type="email" id="email-input" name="EMAIL" class="email-input" placeholder="Your email address" autocomplete="email" required>
-            <button type="submit" class="submit-btn">Request early access</button>
-          </div>
-          <p class="form-note">We're rolling out access in small groups. You'll hear from us when your spot is ready.</p>
-        </form>
+        const email = document.getElementById('email-input').value;
+        const url = 'https://app.us16.list-manage.com/subscribe/post?u=13ef2d1c562c5cb19bf4a78d3&id=c8f5393bd0&f_id=00c81de1f0';
 
-        <script>
-        document.getElementById('waitlist-form').addEventListener('submit', function(e) {
-          e.preventDefault();
+        const formData = new FormData();
+        formData.append('EMAIL', email);
+        formData.append('tags', '2216256');
+        formData.append('b_13ef2d1c562c5cb19bf4a78d3_c8f5393bd0', '');
 
-          const email = document.getElementById('email-input').value;
-          const url = 'https://app.us16.list-manage.com/subscribe/post?u=13ef2d1c562c5cb19bf4a78d3&id=c8f5393bd0&f_id=00c81de1f0';
-
-          const formData = new FormData();
-          formData.append('EMAIL', email);
-          formData.append('tags', '2216256');
-          formData.append('b_13ef2d1c562c5cb19bf4a78d3_c8f5393bd0', '');
-
-          fetch(url, {
-            method: 'POST',
-            body: formData,
-            mode: 'no-cors'
-          }).then(() => {
-            window.location.href = '/thanks';
-          }).catch(() => {
-            window.location.href = '/thanks';
-          });
+        fetch(url, {
+          method: 'POST',
+          body: formData,
+          mode: 'no-cors'
+        }).then(() => {
+          window.location.href = '/thanks';
+        }).catch(() => {
+          window.location.href = '/thanks';
         });
-        </script>
-      </section>
-    </main>
+      });
+      </script>
+    </div>
+  </header>
 
-    <footer>
-      <nav aria-label="Legal">
+  <main>
+
+    <section aria-labelledby="see-title">
+      <div class="wrap">
+        <h2 class="section-title serif" id="see-title">See it in action</h2>
+        <p class="section-lede">From "what's for dinner?" to a finished grocery list, in one app.</p>
+        <ul class="shots">
+          <li><img src="/assets/shot-discover.webp" width="600" height="1200" loading="lazy" alt="The Discover screen in allof, showing a suggested dinner with a photo, cook time and a button to add it to the meal plan"></li>
+          <li><img src="/assets/shot-create.webp" width="600" height="1200" loading="lazy" alt="The Create screen in allof, where you describe a meal you have in mind and get a recipe for it"></li>
+          <li><img src="/assets/shot-vote.webp" width="600" height="1200" loading="lazy" alt="The Vote screen in allof, where household members approve or pass on suggested dinners"></li>
+          <li><img src="/assets/shot-recipe.webp" width="600" height="1200" loading="lazy" alt="A full recipe in allof with ingredients and step-by-step instructions"></li>
+          <li><img src="/assets/shot-grocery.webp" width="600" height="1200" loading="lazy" alt="The grocery list in allof, organized by store section with a button to send it to Kroger"></li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="how-title">
+      <div class="wrap">
+        <h2 class="section-title serif" id="how-title">How it works</h2>
+        <p class="section-lede">From a blank slate to a full cart, whenever you need it.</p>
+        <ol class="steps">
+          <li class="step">
+            <span class="step-num">01</span>
+            <h3 class="serif">Pick or create your meals</h3>
+            <p>Whenever you need an idea, allof suggests dinners shaped by your household's real tastes and dietary needs, each with a photo and a full recipe. Or describe a meal of your own and create it from scratch.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">02</span>
+            <h3 class="serif">Decide together</h3>
+            <p>Share ideas with the people you eat with and vote in seconds. Add the winners to your meal plan on the days you choose.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">03</span>
+            <h3 class="serif">A list that builds itself</h3>
+            <p>allof turns your meals into one organized grocery list, sorted by store section, and sends it straight to your Kroger cart. More retailers are on the way.</p>
+          </li>
+        </ol>
+        <p class="learns">Rate what you cook and skip what doesn't land. allof adjusts its suggestions to your household over time.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="yours-title">
+      <div class="wrap">
+        <h2 class="section-title serif" id="yours-title">Suggestions are the start. You're in control.</h2>
+        <p class="section-lede">allof does the heavy lifting, and everything stays yours to change.</p>
+        <ul class="features">
+          <li class="feature">
+            <h3 class="serif">Make every recipe yours</h3>
+            <p>Swap an ingredient, scale the servings, ask for a variation, or start from your own idea. Customize recipes, quantities, ingredients and more.</p>
+          </li>
+          <li class="feature">
+            <h3 class="serif">Bring your recipes in</h3>
+            <p>Import recipes from recipe sites and social media posts by pasting a link or text. allof turns each one into your own version, with credit to the source.</p>
+          </li>
+          <li class="feature">
+            <h3 class="serif">Your own cookbooks</h3>
+            <p>Save favorites into custom cookbooks and build a collection that is genuinely yours.</p>
+          </li>
+          <li class="feature">
+            <h3 class="serif">Built for households</h3>
+            <p>Household accounts share more than the vote. Everyone sees the same plan, the same live grocery list, and the same recipes, so dinner stays coordinated.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="founders-title">
+      <div class="wrap">
+        <div class="founders">
+          <h2 class="section-title serif" id="founders-title">Built with love by two founders</h2>
+          <p>allof is built by two dedicated founders who cook allof meals for their own families every night.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing" aria-labelledby="join-title">
+      <div class="wrap">
+        <h2 class="section-title serif" id="join-title">Be one of the first to try it</h2>
+        <p class="section-lede">allof is in private beta on iOS, Android and the web. Request access and we'll let you know when your spot is ready.</p>
+        <a href="#waitlist-form" class="btn">Request early access</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <nav aria-label="Legal and contact">
         <a href="/privacy">Privacy Policy</a>
         <a href="/terms">Terms of Service</a>
+        <a href="mailto:drew@allof.app">Contact</a>
       </nav>
-    </footer>
+      <p>© 2026 ALLOF LLC</p>
+    </div>
+  </footer>
 
-  </div>
 </body>
 </html>
